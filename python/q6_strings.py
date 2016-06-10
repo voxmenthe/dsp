@@ -18,7 +18,11 @@ def donuts(count):
     >>> donuts(99)
     'Number of donuts: many'
     """
-    raise NotImplementedError
+    # raise NotImplementedError
+    if count < 10:
+        return "Number of donuts: " + str(count)
+    elif count >= 10:
+        return "Number of donuts: many"
 
 
 def both_ends(s):
@@ -37,12 +41,17 @@ def both_ends(s):
     >>> both_ends('xyz')
     'xyyz'
     """
-    raise NotImplementedError
+    # raise NotImplementedError
+    if len(s) < 2:
+        return ""
+    else:
+        return s[:2] + s[-2:]
+
 
 
 def fix_start(s):
     """
-    Given a string s, return a string where all occurences of its
+    Given a string s, return a string where all occurrences of its
     first char have been changed to '*', except do not change the
     first char itself. e.g. 'babble' yields 'ba**le' Assume that the
     string is length 1 or more.
@@ -56,7 +65,27 @@ def fix_start(s):
     >>> fix_start('donut')
     'donut'
     """
-    raise NotImplementedError
+    #raise NotImplementedError
+    start = s[0]
+    newstr = start
+    counter = 1
+    while len(newstr) < len(s):
+        if s[counter] == start:
+            newstr = newstr + '*'
+        else:
+            newstr = newstr + s[counter]
+        counter += 1
+    return newstr
+
+
+
+
+
+
+
+
+
+
 
 
 def mix_up(a, b):

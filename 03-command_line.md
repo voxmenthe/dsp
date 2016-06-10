@@ -20,15 +20,13 @@ Make a cheat sheet for yourself: a list of at least **ten** commands and what th
 ###Q2.  List Files in Unix   
 
 What do the following commands do:  
-`ls`  
-`ls -a`  
-`ls -l`  
-`ls -lh`  
-`ls -lah`  
-`ls -t`  
-`ls -Glp`  
-
-> > REPLACE THIS TEXT WITH YOUR RESPONSE
+`ls`  		list files in current directory
+`ls -a`  	list all files in current dir including those starting with .
+`ls -l`  	list with long listing format
+`ls -lh`    long listing format with human readable file sizes 
+`ls -lah`   long listing format with human readable file sizes
+`ls -t`  	list sorted by modification time, newest first
+`ls -Glp`   G = don't print group names -l  -p = indicator-style is slash
 
 ---
 
@@ -36,15 +34,32 @@ What do the following commands do:
 
 Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) and pick 5 of your favorites:
 
-> > REPLACE THIS TEXT WITH YOUR RESPONSE
-
+> > I like:
+ls -G 		because it's a nice clean format
+ls -r 		because reverse order is always fun
+ls -x 		nice to see things as rows
+ls -d 		because sometimes you just want the directories
+ls -t 		sorted by freshness is useful
 ---
 
 ###Q4.  Xargs   
 
 What does `xargs` do? Give an example of how to use it.
 
-> > REPLACE THIS TEXT WITH YOUR RESPONSE
+> > xargs is used to execute a command with a constructed argument list
+
+usage:
+
+# find all the ipython notebook files in the "SuperDuper" directory and pass to ls command:
+
+find ./SuperDuper -name "*.ipynb" -print0 | xargs -0 ls
+
+# find all files in SuperDuper folder, pass to grep and search for the string "hello":
+
+find ./SuperDuper -print | xargs grep "hello"
+
+
+
 
  
 
