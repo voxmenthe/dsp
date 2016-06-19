@@ -19,8 +19,7 @@ Print the first 3 key and value pairs of the dictionary:
 """
 
 
-# temp:
-"""
+
 import pandas as pd
 from collections import Counter
 
@@ -91,8 +90,7 @@ x = itertools.islice(faculty_dict.items(), 0, 3)
 for key, value in x:
     print(key, value)
 
-#temp:
-"""
+
 
 ####Q7.  The previous dictionary does not have the best design for keys.  Create a new dictionary with keys as:
 
