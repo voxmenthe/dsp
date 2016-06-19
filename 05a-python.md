@@ -12,7 +12,7 @@ For quick and easy interactive practice with Python, many people enjoy [Codecade
 
 How are Python lists and tuples similar and different? Which will work as keys in dictionaries? Why?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+>> Tuples can be thought of immutable lists where the indices have an implied meaning (which is inextricably tied up with their immutability). Thus tuples can be used as keys in dictionaries, because of the fixed "meaning" of their index values. Another distinction that follows from tuples' immutability is that you deal with tuples as a coherent unit, while with lists you generally deal with the items individually. Also tuple instantiation is usually faster than for lists, but item access for lists can sometimes be faster or similar. If you want to change anything tuples are slower since you need to re-instantiate. Tuples take less space in memory since fixed (no need to overallocate). 
 
 ---
 
@@ -20,7 +20,19 @@ How are Python lists and tuples similar and different? Which will work as keys i
 
 How are Python lists and sets similar and different? Give examples of using both. How does performance compare between lists and sets for finding an element. Why?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+>>  Sets are iterable sequences like lists and tuples but the elements in a set must be unique, and the order is arbitrary. Thus sets can use the union, intersect, difference and symmetric difference methods. Also the items in a set must be immutable, thus 
+
+Usage-wise, if you care about order, you need to use a list. If you don't want duplicates, use a set. If you need to associate values with unique keys so you can look them up later, use a dictionary.
+
+Performance-wise, when you want to store values to iterate over, lists are faster, but if you're storing unique values to check for their existence, sets are usually much faster.
+
+Examples:
+list1 = [["Janice","Dalton"],["Bill","Murray"],["Chloe","Montaigne"]]
+for x in list1:
+	print(x[0] + " " + x[1])
+
+set1 = ["Janice Dalton","Bill Murray","Chloe Montaigne"]
+if "Janice Dalton" in set1 print("Hello Janice")
 
 ---
 
@@ -28,16 +40,36 @@ How are Python lists and sets similar and different? Give examples of using both
 
 Describe Python's `lambda`. What is it, and what is it used for? Give at least one example, including an example of using a `lambda` in the `key` argument to `sorted`.
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+>> Python's lambda is an anonymous function definition operator.
 
+Lambda Examples:
+sometups = [(0, -54, -78),(1, 3, -2),(-1, 0, 4),(0, -1, 3),(-2, 6, -5),(0, 23, 17)]
+sorted(sometups, key = lambda item: item[1]) # sorts by the 2nd item in each tuple
+
+(lambda x: x+2)(3) # 5
+
+list3 = [23,5,6,7,8,2,3,4,5,6,7,8,9]
+sorted(list3, key = lambda x: x-(x*2)) # [23, 9, 8, 8, 7, 7, 6, 6, 5, 5, 4, 3, 2]
+
+[lambda x: x*x for x in range(10)]
 ---
 
 ###Q4. List Comprehension, Map &amp; Filter
 
 Explain list comprehensions. Give examples and show equivalents with `map` and `filter`. How do their capabilities compare? Also demonstrate set comprehensions and dictionary comprehensions.
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+>> Python's list comprehensions are a cute syntax for transforming any one list into another list, or for constructing a list from a function. They essentially support using the functionality of map and filter in a different (simpler?) syntax.
 
+List comprehension examples:
+list3 = [23,5,6,7,8,2,3,4,5,6,7,8,9]
+
+[print(x) for x in list3]
+
+[v * 5 for v in list3 if not v % 2] 
+# Out: [30, 40, 10, 20, 30, 40]
+
+list(map(lambda v : v *5, filter(lambda u : not u % 2, list3))) 
+# Out: [30, 40, 10, 20, 30, 40]
 ---
 
 ###Complete the following problems by editing the files below:

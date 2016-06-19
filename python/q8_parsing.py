@@ -9,11 +9,25 @@
 
 import csv
 
-  def read_data(data):
-   # COMPLETE THIS FUNCTION
+def readfile_array(filename):
+    result = []
+    with open(filename, 'rb') as csvfile:
+        filedata = csv.reader(csvfile, delimiter=',')
+        for row in filedata:
+            result.append(row)
+    return result
 
-  def get_min_score_difference(self, parsed_data):
-    # COMPLETE THIS FUNCTION
+def get_min_score_diff(data_array):
+    import sys
+    result = [sys.maxint,""]
+    for idx, row in enumerate(data_array):
+        if idx != 0:
+            diff = abs(int(row[-3])-int(row[-2]))
+            if diff < result[0]:
+                result[0] = diff
+                result[1] = row[0]
+    print result[1]
+    return result[1]
 
-  def get_team(self, index_value, parsed_data):
-    # COMPLETE THIS FUNCTION
+footballdata = readfile_array('football.csv')
+get_min_score_diff(footballdata)
